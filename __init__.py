@@ -11,4 +11,3 @@ app.mount('/static', StaticFiles(directory="static"), name="static")
 async def read_root():
     with open("./static/index.html", "r") as html_file:
         return HTMLResponse(html_file.read(), status_code=200)
-    # return HTMLResponse(open(path.abspath("./static/index.html")), status_code=200)
