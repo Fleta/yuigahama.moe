@@ -11,3 +11,8 @@ app.mount('/static', StaticFiles(directory="static"), name="static")
 async def read_root():
     with open("./static/index.html", "r") as html_file:
         return HTMLResponse(html_file.read(), status_code=200)
+
+@app.get("/resume")
+async def resume_page():
+    with open("./static/resume.html", "r", encoding="UTF8") as resume_file:
+        return HTMLResponse(resume_file.read(), status_code=200)
