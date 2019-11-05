@@ -1,10 +1,3 @@
 # yuigahama.moe-main
 
-Visit [yuigahama.moe](http://yuigahama.moe)
-
-## Setup
-
-```
-npm install
-node App.js
-```
+API and WEB server for personal blog and other services, visit [my page](https://yuigahama.moe)
