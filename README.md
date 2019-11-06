@@ -5,19 +5,19 @@ API and WEB server for personal blog and other services, visit [my page](https:/
 ## installation
 
 ```
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 
 or 
 
 ```
-python3 -m pip install requirements.txt
+python3 -m pip install -r requirements.txt
 ```
 
 or 
 
 ```
-pip3 install requirements.txt
+pip3 install -r requirements.txt
 ```
 
 ## run
