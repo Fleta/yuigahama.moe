@@ -23,15 +23,17 @@ pip3 install -r requirements.txt
 ## run
 
 ```
-uvicorn __init__:app --reload
+uvicorn main:app --reload
 ```
 
 or
 
 ```
-python -m uvicorn __init__:app --reload
+python -m uvicorn main:app --reload
 ```
 
-`__init__`: `__init__.py`, the main script of project
+`main`: `main.py`, the main script of project
+
 `app`: the object created inside of main script with the line `app = FastAPI()`.
+
 `--reload`: make the server restart after code changes. Only do this for development.
