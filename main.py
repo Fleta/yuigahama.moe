@@ -12,10 +12,6 @@ import sys
 sys.path.append(abspath(dirname(__file__) + "\\..\\"))
 import bot_for_cat
 
-class ResponseModel(BaseModel):
-    status: str
-    response: str = None
-
 app = FastAPI()
 app.mount('/static', StaticFiles(directory="static"), name="static")
 
@@ -35,4 +31,6 @@ async def test_response():
         'status': 200,
         'response': bot_for_cat.response.say_hello()
     }
-    return JSONResponse(content=jsonable_encoder(ResponseModel(**response_data)))
+    return JSONResponse(content=jsonable_encoder(
+        bot_for_cat.models.normal_response.Response(**response_data)) 
+    )
