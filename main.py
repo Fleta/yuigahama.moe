@@ -52,7 +52,7 @@ async def test_response():
 
 @app.post("/api/catbot/receive")
 async def handle_receive_event(message: dict):
-    logger.debug(jsonable_encoder(kakao_request.Request(**message)))
+    # logger.debug(jsonable_encoder(kakao_request.Request(**message)))
     response_data = {
         'status': 200,
         'response': response.say_hello()
