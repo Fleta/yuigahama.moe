@@ -50,8 +50,8 @@ async def test_response():
         normal_response.Response(**response_data)) 
     )
 
-@app.post("/api/catbot/receive")
-async def handle_receive_event(message: dict):
+@app.post("/api/catbot/simple-text-response")
+async def simple_text_response(message: dict):
     # logger.debug(jsonable_encoder(kakao_request.Request(**message)))
     response_data = {
         'status': 200,
@@ -59,4 +59,9 @@ async def handle_receive_event(message: dict):
     }
     return JSONResponse(content=jsonable_encoder(
         normal_response.Response(**response_data)) 
+        # kakao_response.Reponse(**response_data)
     )
+
+@app.post("/api/catbot/simple-image-response")
+async def simple_image_response(message: dict):
+    return response.serve_sample_image("https://placekitten.com/200/300", "sample cat image")
