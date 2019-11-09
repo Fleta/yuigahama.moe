@@ -74,4 +74,4 @@ async def simple_image_response(message: dict):
 @app.post("/api/catbot/call-cat")
 async def call_cat_response(message: dict):
     data = jsonable_encoder(kakao_request.Request(**message))
-    return response.serve_cat_image("", "당신이 찾는 고양이")
+    return response.serve_cat_image(data['userRequest']['utterance'], "당신이 찾는 고양이")
