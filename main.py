@@ -52,7 +52,7 @@ async def test_response():
 
 @app.get("/api/catbot/cat-image/{item_id}")
 async def serve_cat_image(item_id):
-    return FileResponse(abspath(dirname(__file__)) + "/static/images/cats/" + item_id, media_type="image/jpg")
+    return FileResponse(abspath(dirname(__file__)) + "/static/images/cats/" + item_id + '.jpg', media_type="image/jpg")
 
 
 @app.post("/api/catbot/simple-text-response")
