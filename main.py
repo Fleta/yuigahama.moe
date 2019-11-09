@@ -4,7 +4,7 @@ from starlette.staticfiles import StaticFiles
 from starlette.responses import HTMLResponse
 from pydantic import BaseModel
 from fastapi.encoders import jsonable_encoder
-from starlette.responses import JSONResponse
+from starlette.responses import JSONResponse, FileResponse
 
 from os.path import abspath, dirname
 import sys, logging
@@ -50,6 +50,11 @@ async def test_response():
         normal_response.Response(**response_data)) 
     )
 
+@app.get("/api/catbot/cat-image/{item_id}")
+async def serve_cat_image(item_id):
+    return FileResponse("./static/images/cats/" + item_id, media_type="image/jpg")
+
+
 @app.post("/api/catbot/simple-text-response")
 async def simple_text_response(message: dict):
     # logger.debug(jsonable_encoder(kakao_request.Request(**message)))
@@ -65,3 +70,8 @@ async def simple_text_response(message: dict):
 @app.post("/api/catbot/simple-image-response")
 async def simple_image_response(message: dict):
     return response.serve_sample_image("https://placekitten.com/200/300", "sample cat image")
+
+@app.post("/api/catbot/call-cat")
+async def call_cat_response(message: dict):
+    data = jsonable_encoder(kakao_request.Request(**message)).get('data')
+    return response.serve_cat_image("", "당신이 찾는 고양이")

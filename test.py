@@ -43,3 +43,7 @@ request_data = {
 
 print(jsonable_encoder(
     bot_for_cat.models.kakao_request.Request(**request_data)) )
+
+data = jsonable_encoder(bot_for_cat.models.kakao_request.Request(**request_data))
+print(data['userRequest']['utterance'])
+print('' in 'something')
