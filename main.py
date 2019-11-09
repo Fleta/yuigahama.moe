@@ -52,7 +52,7 @@ async def test_response():
 
 @app.get("/api/catbot/cat-image/{item_id}")
 async def serve_cat_image(item_id):
-    return FileResponse("./static/images/cats/" + item_id, media_type="image/jpg")
+    return FileResponse(abspath(dirname(__file__)) + "/static/images/cats/" + item_id, media_type="image/jpg")
 
 
 @app.post("/api/catbot/simple-text-response")
@@ -73,5 +73,5 @@ async def simple_image_response(message: dict):
 
 @app.post("/api/catbot/call-cat")
 async def call_cat_response(message: dict):
-    data = jsonable_encoder(kakao_request.Request(**message)).get('data')
+    data = jsonable_encoder(kakao_request.Request(**message))
     return response.serve_cat_image("", "당신이 찾는 고양이")

@@ -47,3 +47,4 @@ print(jsonable_encoder(
 data = jsonable_encoder(bot_for_cat.models.kakao_request.Request(**request_data))
 print(data['userRequest']['utterance'])
 print('' in 'something')
+print (abspath(dirname(__file__)))
