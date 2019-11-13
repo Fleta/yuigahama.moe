@@ -12,6 +12,7 @@ from starlette.responses import JSONResponse, FileResponse
 sys.path.append(abspath(dirname(__file__) + "\\..\\"))
 from bot_for_cat import response
 from bot_for_cat.models import normal_response, kakao_request
+from common_functions import *
 
 app = FastAPI()
 app.mount('/static', StaticFiles(directory="static"), name="static")
@@ -80,4 +81,5 @@ async def simple_image_response(message: dict):
 @app.post("/api/catbot/call-cat")
 async def call_cat_response(message: dict):
     data = jsonable_encoder(kakao_request.Request(**message))
-    return response.serve_cat_image(data['userRequest']['utterance'], "당신이 찾는 고양이")
+    image_url = make_cat_image_url(data['userRequest']['utterance'])
+    return response.serve_cat_image(image_url, "당신이 찾는 고양이")
